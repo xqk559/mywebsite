@@ -4,20 +4,49 @@
   align-items: center;
   font: verdana;
   align-content: center;
-  background-image: url("background.jpg.jpg");
+  background-image: url("full-bloom.png");
   height: 100%;
   width: 100%;
 }
 
+.Header {
+  font-weight: 900;
+  width: 100%;
+}
+
 html {
-  background-image: url("background.jpg.jpg");
+  background-image: url("full-bloom.png");
+}
+
+.Body1 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font: verdana;
+  align-content: center;
+  background-color: transparent;
+}
+
+.Menu1 {
+  background-color: darkgray;
+}
+
+.Link {
+  text-decoration: none;
+  color: black;
+  font: verdana;
+  font-weight: 900;
+
 }
 
 .MyRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
-
+  align-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .MyColumn {
@@ -25,4 +54,14 @@ html {
   margin: 0 1%;
   display: flex;
   justify-content: center;
+}
+
+.BigText {
+  font-size: 30px;
+  color: black;
+  font: verdana;
+}
+
+.List {
+  margin: 10px 0;
 }

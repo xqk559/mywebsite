@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Redirect, hashHistory} from 'react-router-dom';
+import {createBrowserHistory } from 'history';
+
+let history = createBrowserHistory({
+  basename: "", // The base URL of the app (see below)
+  forceRefresh: false, // Set true to force full page refreshes
+  keyLength: 6, // The length of location.key
+  // A function to use to confirm navigation with the user (see below)
+  getUserConfirmation: (message, callback) => callback(window.confirm(message))
+});
 
 class App extends Component {
   state = {
@@ -10,83 +18,48 @@ class App extends Component {
   }
   render() {
 
-    let titleHandler = () => {
-      this.setState({
-        fucking: "FUCKING"
-      })
-    }
-
-    let dontclickHandler = () => {
-      this.setState({
-        dontclick: "Fuck You"
-      })
-    }
-
     return (
-    <Router>
+    <Router history={this.history}>
       <div className="App">
-      <div className="App">
-        <header>
-          <nav>
-            <ul><a href="/link">Link</a></ul>
+      <div>
+        <header className="Menu1">
+          <nav className="MyRow">
+            <ul className="List"><a href="/" className="Link" class="btn btn-secondary" role="button" aria-pressed="true">Home</a></ul>
+            <ul className="List"><a href="https://docs.google.com/document/d/1bV1kvFRinTEv72zRznAptFIcL3CW0q2ckHVhPQxeang/edit?usp=sharing" className="Link" target="_blank" class="btn btn-secondary" role="button" aria-pressed="true" >Resume</a></ul>
+            <ul className="List"><a href="https://github.com/xqk559" className="Link" target="_blank" class="btn btn-secondary" role="button" aria-pressed="true">GitHub</a></ul>
+            <ul className="List"><a href="/Contact" class="btn btn-secondary" role="button" aria-pressed="true">Contact</a></ul>
+            <ul class="dropdown" className="List">
+              <button className="List" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Projects
+              </button>
+              <div className="List" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="https://hindsight-bc.firebaseapp.com/" target="_blank">Hindsight BC</a>
+                <a class="dropdown-item" href="#">Puppycoin</a>
+                <a class="dropdown-item" href="#">Old Puppy Adoption</a>
+              </div>
+            </ul>
           </nav>
         </header>
-        <Route path="/" exact render={() => <h1>Home</h1>} />
-            <body className="App">
-              <h1 className="App">My {this.state.fucking} Website.</h1>
-              <p>{this.state.dontclick}</p>
-              <div className="MyRow">
-              <div class="dropdown" className="MyColumn">
-                      <button class="btn btn-secondary dropdown-toggle" 
-                              type="button" 
-                              id="dropdownMenuButton" 
-                              data-toggle="dropdown" 
-                              aria-haspopup="true" 
-                              aria-expanded="false">
-                        Malarkey
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#" onClick= {titleHandler} >Button</a>
-                        <a class="dropdown-item" href="#">Another Button</a>
-                        <a class="dropdown-item" href="#">The Best Button</a>
-                        <a class="dropdown-item" href="#" onClick= {dontclickHandler} >Don't Click this Button</a>
-                      </div>
-                    </div>
-                    <div></div>
-                    <div class="dropdown" className="MyColumn">
-                      <button class="btn btn-secondary dropdown-toggle" 
-                              type="button" 
-                              id="dropdownMenuButton" 
-                              data-toggle="dropdown" 
-                              aria-haspopup="true" 
-                              aria-expanded="false">
-                        Bull Honkey        
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Button</a>
-                        <a class="dropdown-item" href="#">Another Button</a>
-                        <a class="dropdown-item" href="#">The Best Button</a>
-                        <a class="dropdown-item" href="#">Don't Click this Button</a>
-                      </div>
-                    </div>
-                    <div class="dropdown" className="MyColumn">
-                      <button class="btn btn-secondary dropdown-toggle" 
-                              type="button" 
-                              id="dropdownMenuButton" 
-                              data-toggle="dropdown" 
-                              aria-haspopup="true" 
-                              aria-expanded="false">
-                        Dropdown Menu
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Button</a>
-                        <a class="dropdown-item" href="#">Another Button</a>
-                        <a class="dropdown-item" href="#">The Best Button</a>
-                        <a class="dropdown-item" href="#">Don't Click this Button</a>
-                      </div>
-                    </div>
-                  </div>
-            </body>
+        <Route path="/" exact render={() => 
+        <body className="Body1">
+                  <br></br>
+                  <img src = { require ('./photo.png')} height= "200" width= "200" />
+                  <br></br>
+                  <b className="BigText">Keith Davis</b>
+                  <br></br>
+                  <div>I am a full stack web developer with experience in React,</div>
+                  <div>React Native, Python, Firebase, and currently relevant libraries.</div>
+                  <br></br>
+                  <b className="BigText">Projects:</b>
+            </body>} />
+            <Route path="/Resume" exact render={() => <h1>Resume</h1>} />
+            <Route path="/Contact" exact render={() => 
+              <div>
+                <h1>Contact</h1>
+                <br></br>
+                <p>Email: xqk559@gmail.com</p>
+                <p>GitHub: <a href="https://github.com/xqk559" target="_blank">https://github.com/xqk559</a></p>
+                </div>} />
       </div>
       </div>
       </Router>
